@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <link rel="shortcut icon" href="favicon-200.png" type="image/x-icon">
+</head>
+
+<body>
+    <h1 style="background-color: rgb(87, 87, 197); color: #000;">Controle de Estoque</h1>
+
+    <input type="text" id="item" placeholder="Nome do item">
+    <input type="number" id="quantidade" placeholder="Quantidade">
+    <button onclick="adicionarItem()">Adicionar ao Estoque</button>
+
+    <h2>Itens em Estoque:</h2>
+    <ul id="listaEstoque"></ul>
+
+    <script>
+          window.alert("Olá, seja bem-vindo ao meu site");
+          window.alert("Aqui você pode fazer o controle do estoque dos seus produtos");
+
+        function adicionarItem() {
+            let item = document.getElementById('item').value;
+            let quantidade = document.getElementById('quantidade').value;
+
+            if (item && quantidade > 0) {
+                let lista = document.getElementById('listaEstoque');
+                let novoItem = document.createElement('li');
+                novoItem.innerText = `${item} - Quantidade: ${quantidade}`;
+                lista.appendChild(novoItem);
+
+                // Limpar os campos após adicionar
+                document.getElementById('item').value = '';
+                document.getElementById('quantidade').value = '';
+            } else {
+                alert("Por favor, preencha o nome do item e a quantidade corretamente.");
+            }
+        }
+
+        exibirEstoque();
+      
+    </script>
+</body>
+</html>

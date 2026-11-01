@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio pessoal de Uie, estudante de ADS focado em desenvolvimento, redes e cibersegurança.">
+    <meta name="theme-color" content="#070716">
+    <title>Portfólio | Uie</title>
+    <link rel="icon" type="image/png" href="images.png">
+    <link rel="stylesheet" href="portfolio.css">
+    <script>
+        // Aplica o tema salvo antes de desenhar a página (evita "piscar")
+        document.documentElement.classList.add('js');
+        document.documentElement.dataset.tema = localStorage.getItem('tema') || 'escuro';
+    </script>
+    <script src="supabase-config.js" defer></script>
+    <script src="portfolio.js" defer></script>
+</head>
+<body>
+
+    <!-- Barra de progresso da rolagem -->
+    <div class="progresso" id="progresso"></div>
+
+    <header class="topo" id="topo">
+        <a href="#home" class="logo">Uie<span class="destaque">.</span></a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="menu">
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+            <button class="tema-toggle" id="temaToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Seção Home -->
+        <section id="home" class="hero">
+            <div class="hero-foto">
+                <img src="foto-perfil.jpeg" alt="Foto de Uie Nene Cá" width="200" height="200">
+            </div>
+            <div class="hero-texto">
+            <p class="hero-saudacao">Olá, eu sou</p>
+            <h1>Uie <span class="destaque">Nene Cá</span></h1>
+            <p class="hero-cargo">
+                <span id="digitando" aria-live="polite">Estudante de ADS</span><span class="cursor" aria-hidden="true">|</span>
+            </p>
+            <p>
+                Estudante de <strong>Análise e Desenvolvimento de Sistemas (ADS)</strong>. Este espaço reúne meus projetos
+                e experiências na área de tecnologia, combinando <strong>suporte técnico</strong> com estudos contínuos em
+                desenvolvimento, redes, segurança da informação e cloud computing.
+            </p>
+            <div class="hero-botoes">
+                <a href="#projetos" class="btn">Ver projetos</a>
+                <a href="#contato" class="btn btn-contorno">Fale comigo</a>
+                <a href="curriculo.html" class="btn btn-contorno">Ver currículo</a>
+            </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre -->
+        <section id="sobre" class="revelar">
+            <h2>Sobre mim</h2>
+            <p>
+                Sou apaixonado por tecnologia desde sempre. Gosto de entender como as coisas funcionam por trás dos panos —
+                por isso venho me aprofundando em desenvolvimento seguro, infraestrutura de redes e boas práticas de programação.
+            </p>
+            <p>
+                Hoje já tenho boa base em conceitos como NAT, sub-redes, DNS, DHCP e os modelos TCP/IP e OSI, além de estar
+                estudando JavaScript. Meu próximo passo é expandir esse conhecimento para a área de suporte técnico e cibersegurança.
+            </p>
+            <p>
+                Estou em busca de oportunidades para colocar a mão na massa em projetos reais, resolver problemas complexos e
+                crescer ao lado de equipes que também têm paixão por aprender.
+            </p>
+
+            <blockquote>
+                "A tecnologia move o mundo, e eu quero estar na direção dessa mudança."
+            </blockquote>
+
+            <div class="numeros">
+                <div class="numero">
+                    <strong class="contador" data-alvo="3">0</strong>
+                    <span>Projetos publicados</span>
+                </div>
+                <div class="numero">
+                    <strong class="contador" data-alvo="8">0</strong>
+                    <span>Áreas de estudo</span>
+                </div>
+                <div class="numero">
+                    <strong>100%</strong>
+                    <span>Vontade de aprender</span>
+                </div>
+            </div>
+
+            <p class="disponivel"><span class="ponto-verde" aria-hidden="true"></span> Aberto a oportunidades de estágio e trabalho na área de tecnologia.</p>
+        </section>
+
+        <!-- Seção Habilidades e Ferramentas -->
+        <section id="habilidades" class="revelar">
+            <h2>Habilidades</h2>
+            <ul class="chips">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Suporte Técnico</li>
+                <li>Segurança da Informação</li>
+                <li>Banco de Dados e SQL</li>
+                <li>Cloud Computing</li>
+                <li>Redes de Computadores</li>
+                <li>Windows CMD</li>
+                <li>PowerShell</li>
+            </ul>
+
+            <h2>Ferramentas e Tecnologias</h2>
+            <ul class="chips chips-ferramentas">
+                <li>Visual Studio Code</li>
+                <li>Linux (Ubuntu Server)</li>
+                <li>VirtualBox</li>
+                <li>Microsoft Word</li>
+                <li>Microsoft Excel</li>
+            </ul>
+        </section>
+
+        <!-- Seção Projetos -->
+        <section id="projetos" class="revelar">
+            <h2>Meus Projetos</h2>
+
+            <div class="filtros" role="group" aria-label="Filtrar projetos">
+                <button class="filtro ativo" data-filtro="todos">Todos</button>
+                <button class="filtro" data-filtro="sistema">Sistemas</button>
+                <button class="filtro" data-filtro="exercicio">Exercícios JS</button>
+            </div>
+
+            <div class="projetos-grid">
+                <article class="projeto-card" data-categoria="sistema">
+                    <h3>Sistema de Gerenciamento de Estoque</h3>
+                    <p>Sistema desenvolvido com foco em eficiência, controle de dados e segurança. Permite acompanhar o inventário de produtos de forma intuitiva, aplicando lógica de programação e banco de dados.</p>
+                    <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                    <a href="estoque.html" target="_blank" rel="noopener noreferrer" class="btn">Acessar o sistema</a>
+                </article>
+
+                <article class="projeto-card" data-categoria="exercicio">
+                    <h3>Sistema de Soma dos Valores</h3>
+                    <p>Um sistema simples para somar dois valores numéricos, praticando captura de dados do formulário e manipulação do DOM.</p>
+                    <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                    <a href="ex007.html" target="_blank" rel="noopener noreferrer" class="btn">Acessar o sistema</a>
+                </article>
+
+                <article class="projeto-card" data-categoria="exercicio">
+                    <h3>Verificador de Idade</h3>
+                    <p>Calcula a idade do usuário com base no ano de nascimento e exibe uma imagem de acordo com a faixa etária e o sexo informado.</p>
+                    <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                    <a href="modelo02.html" target="_blank" rel="noopener noreferrer" class="btn">Acessar o sistema</a>
+                </article>
+
+                <article class="projeto-card projeto-breve" data-categoria="todos">
+                    <h3>Em breve...</h3>
+                    <p>Atualmente estou explorando novos frameworks e tecnologias de cibersegurança para os próximos projetos.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato" class="revelar">
+            <h2>Conecte-se comigo</h2>
+            <p class="centro">Sinta-se à vontade para entrar em contato ou acompanhar minhas redes sociais:</p>
+
+            <!-- E-mail e WhatsApp são montados pelo portfolio.js (dificulta robôs de spam) -->
+            <ul class="redes-lista contato-direto">
+                <li>
+                    <a href="#contato" id="linkEmail" data-usuario="uieneneca7" data-dominio="gmail.com">
+                        <span aria-hidden="true">✉️</span> <span id="textoEmail">E-mail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contato" id="linkWhats" class="whats" data-numero="55,11,94909,8511" target="_blank" rel="noopener noreferrer">
+                        <span aria-hidden="true">💬</span> WhatsApp
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="redes-lista">
+                <li>
+                    <a href="https://www.linkedin.com/in/uie-nene-c%C3%A1-783b2b2a4" target="_blank" rel="noopener noreferrer">
+                        <img src="icone-linkedin.png" alt="" width="22" height="22"> LinkedIn
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/uieneneca7-gif" target="_blank" rel="noopener noreferrer">
+                        <img src="icone-github.png" alt="" width="22" height="22"> GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/06_uie" target="_blank" rel="noopener noreferrer">
+                        <img src="icone-instagram.png" alt="" width="22" height="22"> Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/uie.nene.ca" target="_blank" rel="noopener noreferrer">
+                        <img src="icone-facebook (1).png" alt="" width="22" height="22"> Facebook
+                    </a>
+                </li>
+            </ul>
+
+            <form class="form-contato" id="formContato" novalidate>
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" autocomplete="name" required minlength="2">
+                    <small class="erro" aria-live="polite"></small>
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                    <small class="erro" aria-live="polite"></small>
+                </div>
+                <div class="campo">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required minlength="10" maxlength="1000"></textarea>
+                    <small class="contador-caracteres" id="contadorMsg">0 / 1000</small>
+                    <small class="erro" aria-live="polite"></small>
+                </div>
+                <!-- Armadilha para robôs de spam: pessoas não veem este campo -->
+                <input type="text" name="site" class="armadilha" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <button type="submit" class="btn">Enviar mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="ano">2026</span> Desenvolvido por Uie. Todos os direitos reservados.</p>
+    </footer>
+
+    <button class="voltar-topo" id="voltarTopo" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

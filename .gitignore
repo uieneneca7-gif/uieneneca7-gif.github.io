@@ -1,0 +1,21 @@
+# Arquivos que ficam só no computador (não vão para o GitHub)
+
+# Servidor local (só serve para testar no PC)
+iniciar-servidor.bat
+
+# Versões antigas e imagens não usadas pelo site
+contato.html
+formulario.html
+free-website-icon-5793-thumb.png
+Guine-Bissau.jpg
+Portugal-100.webp
+WhatsApp Image 100.jpeg
+
+# Arquivos grandes / de sistema
+*.iso
+*.vdi
+*.vbox
+*.vbox-prev
+mvwindows/
+desktop.ini
+Thumbs.db

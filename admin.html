@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Painel | Portfólio Uie</title>
+    <link rel="icon" type="image/png" href="images.png">
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="admin.css">
+    <script>
+        document.documentElement.dataset.tema = localStorage.getItem('tema') || 'escuro';
+    </script>
+    <!-- Cópia local da biblioteca supabase-js 2.118.0 (não depende de CDN externo) -->
+    <script src="lib/supabase.js" defer></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="admin.js" defer></script>
+</head>
+<body>
+
+    <header class="topo rolado">
+        <a href="index.html" class="logo">Uie<span class="destaque">.</span> <small class="logo-sub">painel</small></a>
+        <div class="topo-acoes" id="topoAcoes" hidden>
+            <span class="usuario" id="usuarioEmail"></span>
+            <button class="btn btn-contorno btn-pequeno" id="btnSair">Sair</button>
+        </div>
+    </header>
+
+    <main class="painel">
+
+        <!-- Aviso de configuração -->
+        <div class="aviso-config" id="avisoConfig" hidden>
+            <h2>Banco de dados não configurado</h2>
+            <p>Preencha <code>SUPABASE_URL</code> e <code>SUPABASE_CHAVE</code> no arquivo <code>supabase-config.js</code>.</p>
+        </div>
+
+        <!-- Tela de login -->
+        <section class="login" id="telaLogin" hidden>
+            <form class="form-contato" id="formLogin">
+                <h2>Entrar no painel</h2>
+                <div class="campo">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" autocomplete="username" required>
+                </div>
+                <div class="campo">
+                    <label for="loginSenha">Senha</label>
+                    <input type="password" id="loginSenha" autocomplete="current-password" required>
+                </div>
+                <small class="erro" id="loginErro" aria-live="polite"></small>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+        </section>
+
+        <!-- Painel -->
+        <section id="telaPainel" hidden>
+            <div class="abas" role="tablist">
+                <button class="filtro ativo" role="tab" data-aba="abaMensagens">
+                    Mensagens <span class="badge" id="badgeNaoLidas">0</span>
+                </button>
+                <button class="filtro" role="tab" data-aba="abaProjetos">Projetos</button>
+            </div>
+
+            <!-- Aba Mensagens -->
+            <div class="aba" id="abaMensagens">
+                <div class="barra">
+                    <label class="check">
+                        <input type="checkbox" id="soNaoLidas"> Mostrar só as não lidas
+                    </label>
+                    <button class="btn btn-contorno btn-pequeno" id="btnAtualizar">↻ Atualizar</button>
+                </div>
+                <div id="listaMensagens" class="lista"></div>
+            </div>
+
+            <!-- Aba Projetos -->
+            <div class="aba" id="abaProjetos" hidden>
+                <form class="form-contato form-projeto" id="formProjeto">
+                    <h3 id="tituloFormProjeto">Novo projeto</h3>
+                    <input type="hidden" id="projetoId">
+
+                    <div class="campo">
+                        <label for="projetoTitulo">Título</label>
+                        <input type="text" id="projetoTitulo" required minlength="2" maxlength="120">
+                    </div>
+                    <div class="campo">
+                        <label for="projetoDescricao">Descrição</label>
+                        <textarea id="projetoDescricao" rows="3" required minlength="5" maxlength="600"></textarea>
+                    </div>
+                    <div class="linha-campos">
+                        <div class="campo">
+                            <label for="projetoTecnologias">Tecnologias (separe por vírgula)</label>
+                            <input type="text" id="projetoTecnologias" placeholder="HTML, CSS, JavaScript">
+                        </div>
+                        <div class="campo">
+                            <label for="projetoLink">Link</label>
+                            <input type="text" id="projetoLink" placeholder="estoque.html ou https://...">
+                        </div>
+                    </div>
+                    <div class="linha-campos">
+                        <div class="campo">
+                            <label for="projetoCategoria">Categoria</label>
+                            <select id="projetoCategoria">
+                                <option value="sistema">Sistema</option>
+                                <option value="exercicio">Exercício JS</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="projetoOrdem">Ordem de exibição</label>
+                            <input type="number" id="projetoOrdem" value="0" min="0">
+                        </div>
+                    </div>
+                    <label class="check">
+                        <input type="checkbox" id="projetoPublicado" checked> Publicado (aparece no portfólio)
+                    </label>
+
+                    <div class="botoes-form">
+                        <button type="submit" class="btn" id="btnSalvarProjeto">Salvar projeto</button>
+                        <button type="button" class="btn btn-contorno" id="btnCancelarEdicao" hidden>Cancelar edição</button>
+                    </div>
+                </form>
+
+                <div id="listaProjetos" class="lista"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
