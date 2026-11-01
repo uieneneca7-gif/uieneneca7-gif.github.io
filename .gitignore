@@ -2,6 +2,7 @@
 
 # Servidor local (só serve para testar no PC)
 iniciar-servidor.bat
+publicar.bat
 
 # Versões antigas e imagens não usadas pelo site
 contato.html
