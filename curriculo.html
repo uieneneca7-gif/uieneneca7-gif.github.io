@@ -293,16 +293,44 @@
                 display: none;
             }
 
+            /* Tudo em uma única página A4 */
             .folha {
                 width: 210mm;
-                min-height: 297mm;
+                height: 297mm;
+                min-height: 0;
                 margin: 0;
+                overflow: hidden;
                 box-shadow: none;
                 grid-template-columns: 250px 1fr;
             }
 
+            body {
+                font-size: 13px;
+            }
+
+            .lateral {
+                padding: 28px 24px;
+            }
+
+            .lateral h2 {
+                margin: 20px 0 10px;
+            }
+
             .principal {
                 order: 0;
+                padding: 30px 34px;
+            }
+
+            .principal h2 {
+                margin: 16px 0 10px;
+            }
+
+            .item {
+                margin-bottom: 12px;
+            }
+
+            .cursos li {
+                padding: 5px 0;
             }
 
             /* Garante que as cores de fundo saiam no PDF */

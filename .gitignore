@@ -4,6 +4,9 @@
 iniciar-servidor.bat
 publicar.bat
 
+# PDF do currículo (gerado a partir do curriculo.html)
+*.pdf
+
 # Versões antigas e imagens não usadas pelo site
 contato.html
 formulario.html
